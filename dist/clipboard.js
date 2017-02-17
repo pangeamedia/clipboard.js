@@ -722,6 +722,7 @@ module.exports = E;
                     action: this.action(trigger),
                     target: this.target(trigger),
                     text: this.text(trigger),
+                    appendTo: this.appendTo(trigger),
                     trigger: trigger,
                     emitter: this
                 });

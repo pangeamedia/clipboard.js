@@ -50,11 +50,12 @@ class Clipboard extends Emitter {
         }
 
         this.clipboardAction = new ClipboardAction({
-            action  : this.action(trigger),
-            target  : this.target(trigger),
-            text    : this.text(trigger),
-            trigger : trigger,
-            emitter : this
+            action   : this.action(trigger),
+            target   : this.target(trigger),
+            text     : this.text(trigger),
+            appendTo : this.appendTo(trigger),
+            trigger  : trigger,
+            emitter  : this
         });
     }
 
