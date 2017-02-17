@@ -424,6 +424,7 @@ module.exports = E;
                 this.target = options.target;
                 this.text = options.text;
                 this.trigger = options.trigger;
+                this.appendTo = options.appendto;
 
                 this.selectedText = '';
             }
@@ -467,7 +468,9 @@ module.exports = E;
                 this.fakeElem.setAttribute('readonly', '');
                 this.fakeElem.value = this.text;
 
-                document.body.appendChild(this.fakeElem);
+                this.setAppendToElem();
+
+                this.appendToElem.appendChild(this.fakeElem);
 
                 this.selectedText = (0, _select2.default)(this.fakeElem);
                 this.copyText();
@@ -482,9 +485,23 @@ module.exports = E;
                 }
 
                 if (this.fakeElem) {
-                    document.body.removeChild(this.fakeElem);
+                    this.appendToElem.removeChild(this.fakeElem);
                     this.fakeElem = null;
                 }
+            }
+        }, {
+            key: 'setAppendToElem',
+            value: function setAppendToElem() {
+                var appendToElem = void 0;
+
+                if (this.appendTo) {
+                    appendToELem = document.querySelector(this.appendTo);
+                }
+                if (!appendToElem) {
+                    appendToELem = document.body;
+                }
+
+                this.appendToElem = appendToElem;
             }
         }, {
             key: 'selectTarget',

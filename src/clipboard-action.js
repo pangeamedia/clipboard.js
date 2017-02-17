@@ -18,11 +18,12 @@ class ClipboardAction {
      * @param {Object} options
      */
     resolveOptions(options = {}) {
-        this.action  = options.action;
-        this.emitter = options.emitter;
-        this.target  = options.target;
-        this.text    = options.text;
-        this.trigger = options.trigger;
+        this.action   = options.action;
+        this.emitter  = options.emitter;
+        this.target   = options.target;
+        this.text     = options.text;
+        this.trigger  = options.trigger;
+        this.appendTo = options.appendto;
 
         this.selectedText = '';
     }
@@ -69,7 +70,9 @@ class ClipboardAction {
         this.fakeElem.setAttribute('readonly', '');
         this.fakeElem.value = this.text;
 
-        document.body.appendChild(this.fakeElem);
+        this.setAppendToElem();
+
+        this.appendToElem.appendChild(this.fakeElem);
 
         this.selectedText = select(this.fakeElem);
         this.copyText();
@@ -87,9 +90,22 @@ class ClipboardAction {
         }
 
         if (this.fakeElem) {
-            document.body.removeChild(this.fakeElem);
+            this.appendToElem.removeChild(this.fakeElem);
             this.fakeElem = null;
         }
+    }
+
+    setAppendToElem() {
+      let appendToElem;
+
+      if (this.appendTo) {
+        appendToELem = document.querySelector(this.appendTo);
+      }
+      if (!appendToElem) {
+        appendToELem = document.body;
+      }
+
+      this.appendToElem = appendToElem;
     }
 
     /**
