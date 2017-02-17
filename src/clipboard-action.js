@@ -23,7 +23,7 @@ class ClipboardAction {
         this.target   = options.target;
         this.text     = options.text;
         this.trigger  = options.trigger;
-        this.appendTo = options.appendto;
+        this.appendTo = options.appendTo;
 
         this.selectedText = '';
     }

@@ -424,7 +424,7 @@ module.exports = E;
                 this.target = options.target;
                 this.text = options.text;
                 this.trigger = options.trigger;
-                this.appendTo = options.appendto;
+                this.appendTo = options.appendTo;
 
                 this.selectedText = '';
             }
@@ -698,6 +698,7 @@ module.exports = E;
                 this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
                 this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
                 this.text = typeof options.text === 'function' ? options.text : this.defaultText;
+                this.appendTo = typeof options.appendTo === 'function' ? options.appendTo : this.defaultAppendTo;
             }
         }, {
             key: 'listenClick',
@@ -743,6 +744,11 @@ module.exports = E;
             key: 'defaultText',
             value: function defaultText(trigger) {
                 return getAttributeValue('text', trigger);
+            }
+        }, {
+            key: 'defaultAppendTo',
+            value: function defaultAppendTo(trigger) {
+                return getAttributeValue('append-to', trigger);
             }
         }, {
             key: 'destroy',
