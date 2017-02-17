@@ -495,10 +495,10 @@ module.exports = E;
                 var appendToElem = void 0;
 
                 if (this.appendTo) {
-                    appendToELem = document.querySelector(this.appendTo);
+                    appendToElem = document.querySelector(this.appendTo);
                 }
                 if (!appendToElem) {
-                    appendToELem = document.body;
+                    appendToElem = document.body;
                 }
 
                 this.appendToElem = appendToElem;
